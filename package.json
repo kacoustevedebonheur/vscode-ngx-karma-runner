@@ -1,7 +1,7 @@
 {
   	"name": "ngx-karma-runner",
 	"displayName": "ngx-karma-runner",
-	"description": "A single file or spec karma runner ",
+	"description": "A single karma file or spec runner for Angular",
 	"version": "0.0.1",
 	"icon": "public/icon.png",
 	"publisher": "kacoustevedebonheur",
