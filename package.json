@@ -3,13 +3,18 @@
 	"displayName": "ngx-karma-runner",
 	"description": "A single file or spec karma runner ",
 	"version": "0.0.1",
-	"icon": "public/icon3.png",
+	"icon": "public/icon.png",
+	"publisher": "kacoustevedebonheur",
 	"engines": {
 		"vscode": "^1.69.0"
 	},
 	"categories": [
 		"Other"
 	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/kacoustevedebonheur/vscode-ngx-karma-runner.git"
+	  },
 	"activationEvents": ["*"],
 	"main": "./out/extension.js",
 	"contributes": {
