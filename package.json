@@ -1,0 +1,131 @@
+{
+  	"name": "ngx-karma-runner",
+	"displayName": "ngx-karma-runner",
+	"description": "A single file or spec karma runner ",
+	"version": "0.0.1",
+	"icon": "public/icon3.png",
+	"engines": {
+		"vscode": "^1.69.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": ["*"],
+	"main": "./out/extension.js",
+	"contributes": {
+		"configuration": [
+			{
+			  "title": "Ngx-karma-runner Config",
+			  "properties": {
+				"ngxKarmaRunner.configPath": {
+				  "type": "string",
+				  "default": "",
+				  "description": "Karma config path (relative to ${workFolder} e.g. karma.conf.js)",
+				  "scope": "window"
+				},
+				"ngxKarmaRunner.karmaPath": {
+				  "type": "string",
+				  "default": "",
+				  "description": "Absolute path to karma bin file (e.g. ./node_modules/karma/bin/karma)",
+				  "scope": "window"
+				},
+				"ngxKarmaRunner.projectPath": {
+				  "type": "string",
+				  "default": "",
+				  "description": "Absolute path to project directory (e.g. /home/me/project/)",
+				  "scope": "window"
+				},
+				"ngxKarmaRunner.runOptions": {
+				  "type": "array",
+				  "default": [],
+				  "items": {
+					"type": "string",
+					"description": "CLI Option e.g. --auto-watch"
+				  },
+				  "description": "Add CLI Options to the Karma Command e.g. https://karma-runner.github.io/0.12/config/configuration-file.html",
+				  "scope": "window"
+				},
+				"ngxKarmaRunner.disableCodeLens": {
+				  "type": "boolean",
+				  "default": false,
+				  "description": "Disable CodeLens feature",
+				  "scope": "window"
+				},
+				"ngxKarmaRunner.codeLens": {
+				  "type": "array",
+				  "default": [
+					"run",
+					"debug"
+				  ],
+				  "description": "Enable desired codeLens, possible value : 'run', 'debug', 'watch'. Defaults to ['run', 'debug'] ",
+				  "items": {
+					"type": "string",
+					"description": "Either 'run', 'debug' or 'watch'"
+				  },
+				  "scope": "window"
+				},
+				"ngxKarmaRunner.codeLensSelector": {
+				  "type": "string",
+				  "default": "**/*.{test,spec}.{js,jsx,ts,tsx}",
+				  "description": "CodeLens will be shown on files matching this pattern"
+				},
+				"ngxKarmaRunner.changeDirectoryToWorkspaceRoot": {
+				  "type": "boolean",
+				  "default": true,
+				  "description": "Changes directory to workspace root before executing the test",
+				  "scope": "window"
+				},
+				"ngxKarmaRunner.preserveEditorFocus": {
+				  "type": "boolean",
+				  "default": false,
+				  "description": "Preserve focus on editor when running tests",
+				  "scope": "window"
+				}
+			  }
+			}
+		  ],
+		"commands": [
+			{
+				"command": "extension.runCurrentFile",
+				"title": "Run karma"
+			}
+		],
+		"menus": {
+			"editor/context": [
+			  {
+				"command": "extension.runCurrentFile",
+				"when": "resourceFilename =~ /.*\\.(spec|test)\\.(js|jsx|ts|tsx)$/",
+				"group": "02_ngx_karma_runner"
+			  }
+			],
+			"explorer/context": [
+			  {
+				"command": "extension.runCurrentFile",
+				"when": "resourceFilename =~ /.*\\.(spec|test)\\.(js|jsx|ts|tsx)$/",
+				"group": "02_ngx_karma_runner@1"
+			  }
+			]
+		  }
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.69.0",
+		"@types/glob": "^7.2.0",
+		"@types/mocha": "^9.1.1",
+		"@types/node": "16.x",
+		"@typescript-eslint/eslint-plugin": "^5.30.0",
+		"@typescript-eslint/parser": "^5.30.0",
+		"eslint": "^8.18.0",
+		"glob": "^8.0.3",
+		"mocha": "^10.0.0",
+		"typescript": "^4.7.4",
+		"@vscode/test-electron": "^2.1.5"
+	}
+}
